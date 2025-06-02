@@ -1,0 +1,19 @@
+<Window 
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Class="zadanieplaner.ResultWindow"
+    Title="Travel Planner - Podsumowanie"
+    WindowState="Maximized"
+    Background="DarkBlue"
+    Padding="30">
+    
+    <StackPanel
+        Orientation="Vertical"
+    >
+        
+        <TextBlock Name="Summary" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" FontSize="20" Margin="0, 50"/>
+        <Button 
+        />
+        
+    </StackPanel>
+</Window>

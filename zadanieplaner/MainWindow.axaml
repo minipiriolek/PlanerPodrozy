@@ -1,0 +1,87 @@
+<Window 
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    x:Class="zadanieplaner.MainWindow"
+    Title="Travel Planner"
+    WindowState="Maximized"
+    Padding="30"
+    Background="DarkBlue"
+    
+    d:DesignWidth="800"
+    d:DesignHeight="450">
+
+    <ScrollViewer HorizontalAlignment="Center" HorizontalScrollBarVisibility="Auto">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>      
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Imię i Nazwisko" TextAlignment="Right" Padding="10" Margin="10"/>
+            <TextBox Grid.Row="0" Grid.Column="1" Name="NameSurname" Padding="10" Margin="10"/>
+
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Kraj Docelowy" TextAlignment="Right" Padding="10" Margin="10"/>
+            <ComboBox Grid.Row="1" Grid.Column="1" Name="Country" SelectionChanged="Country_OnSelectionChanged" Padding="10" Margin="10">
+                <ComboBoxItem Content="Francja"/>
+                <ComboBoxItem Content="Indie"/>
+                <ComboBoxItem Content="Egipt"/>
+                <ComboBoxItem Content="Dubaj (ZEA)"/>
+                <ComboBoxItem Content="Chorwacja"/>
+                <ComboBoxItem Content="Australia"/>
+                <ComboBoxItem Content="Grecja"/>
+                <ComboBoxItem Content="Dominikana"/>
+                <ComboBoxItem Content="Hiszpania"/>
+                <ComboBoxItem Content="Cypr"/>
+
+            </ComboBox>
+
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Atrakcje" TextAlignment="Right" Padding="10" Margin="10"/>
+            <StackPanel Grid.Row="2" Grid.Column="1" Name="CheckboxPanel" Margin="10">
+                <CheckBox Name="AttractionsMusea" Content="Muzea" />
+                <CheckBox Name="AttractionsNationalParks" Content="Parki Narodowe" />
+                <CheckBox Name="AttractionsMonuments" Content="Zabytki"/>
+                <CheckBox Name="AttractionsRestaurants" Content="Restauracje"/>
+                <CheckBox Name="AttractionsGalleries" Content="Galerie sztuki"/>
+                <CheckBox Name="AttractionsFestivals" Content="Festiwale i koncerty"/>
+            </StackPanel>
+
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="Środek Transportu" TextAlignment="Right" Padding="10" Margin="10"/>
+            <StackPanel Grid.Row="3" Grid.Column="1" Name="RadioGroup1" Margin="10">
+                <RadioButton GroupName="Transport" Name="Plane" Content="Samolot"/>
+                <RadioButton GroupName="Transport" Name="Car" Content="Samochód"/>
+                <RadioButton GroupName="Transport" Name="Train" Content="Pociąg"/>
+                <RadioButton GroupName="Transport" Name="Ship" Content="Statek"/>
+            </StackPanel>
+
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="Data podróży" TextAlignment="Right" Padding="10" Margin="10"/>
+            <DatePicker Grid.Row="4" Grid.Column="1" Name="TravelDate" Margin="10"/>
+
+            <TextBlock Grid.Row="5" Grid.Column="0" Text="Miasta do odwiedzenia" TextAlignment="Right" Padding="10" Margin="10"/>
+            <StackPanel Grid.Row="5" Grid.Column="1" Margin="10">
+                <ListBox Name="Cities" SelectionMode="Multiple"/>
+                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                    <TextBox Name="City" Margin="0,0,15,0"/>
+                    <Button Content="Dodaj Miasto" Click="Button_OnClick"/>
+                </StackPanel>
+            </StackPanel>
+
+            <TextBlock Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Name="PriceBlock" TextAlignment="Center" Margin="0,20,0,0"/>
+            <Button Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Content="Zamów Wycieczkę" Click="Button_OnClick_v2" HorizontalAlignment="Center" Margin="0,20"/>
+            <Image Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Name="ImgCountry" Width="400"/>
+        </Grid>
+    </ScrollViewer>
+</Window>
