@@ -64,3 +64,4 @@ C:\Users\Olek M\RiderProjects\zadanieplaner\zadanieplaner\obj\Debug\net9.0\refin
 C:\Users\Olek M\RiderProjects\zadanieplaner\zadanieplaner\obj\Debug\net9.0\zadanieplaner.pdb
 C:\Users\Olek M\RiderProjects\zadanieplaner\zadanieplaner\obj\Debug\net9.0\zadanieplaner.genruntimeconfig.cache
 C:\Users\Olek M\RiderProjects\zadanieplaner\zadanieplaner\obj\Debug\net9.0\ref\zadanieplaner.dll
+C:\Users\Olek M\RiderProjects\zadanieplaner\zadanieplaner\obj\Debug\net9.0\zadanieplaner.sourcelink.json

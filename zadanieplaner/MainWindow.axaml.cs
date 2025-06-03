@@ -4,6 +4,8 @@ using Avalonia.Media.Imaging;
 using Avalonia.Platform;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
+using Avalonia.Threading;
 
 namespace zadanieplaner
 {
@@ -21,28 +23,44 @@ namespace zadanieplaner
                 Cities.Items.Add(city);
         }
 
-        private void Country_OnSelectionChanged(object? sender, SelectionChangedEventArgs e)
+        private async void Country_OnSelectionChanged(object? sender, SelectionChangedEventArgs e)
         {
             string[] paths = {
-                "avares://Zadanie1/Assets/francja.jpg",
-                "avares://Zadanie1/Assets/indie.jpg",
-                "avares://Zadanie1/Assets/egipt.jpg",
-                "avares://Zadanie1/Assets/dubaj.jpg",
-                "avares://Zadanie1/Assets/chorwacja.jpg",
-                "avares://Zadanie1/Assets/australia.jpg",
-                "avares://Zadanie1/Assets/grecja.jpg",
-                "avares://Zadanie1/Assets/dominikana.jpg",
-                "avares://Zadanie1/Assets/hiszpania.jpeg",
-                "avares://Zadanie1/Assets/cypr.jpg"
+                "avares://zadanieplaner/Assets/francja.jpg",
+                "avares://zadanieplaner/Assets/indie.jpg",
+                "avares://zadanieplaner/Assets/egipt.jpg",
+                "avares://zadanieplaner/Assets/dubaj.jpg",
+                "avares://zadanieplaner/Assets/chorwacja.jpg",
+                "avares://zadanieplaner/Assets/australia.jpg",
+                "avares://zadanieplaner/Assets/grecja.jpg",
+                "avares://zadanieplaner/Assets/dominikana.jpg",
+                "avares://zadanieplaner/Assets/hiszpania.jpeg",
+                "avares://zadanieplaner/Assets/cypr.jpg"
             };
 
 
             if (Country.SelectedIndex >= 0)
             {
-                using var stream = AssetLoader.Open(new Uri(paths[Country.SelectedIndex]));
-                ImgCountry.Source = new Bitmap(stream);
+                string path = paths[Country.SelectedIndex];
+
+                await Task.Run(() =>
+                {
+                    try
+                    {
+                        using var stream = AssetLoader.Open(new Uri(path));
+                        var bitmap = new Bitmap(stream);
+
+                        Dispatcher.UIThread.InvokeAsync(() =>
+                        {
+                            ImgCountry.Source = bitmap;
+                        });
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Błąd przy wczytywaniu obrazu: {ex.Message}");
+                    }
+                });
             }
-            
         }
 
         private void Button_OnClick_v2(object? sender, RoutedEventArgs e)
